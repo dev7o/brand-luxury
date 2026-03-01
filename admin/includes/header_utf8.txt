@@ -1,0 +1,95 @@
+﻿<?php
+/**
+ * Admin Header Include
+ * Brand Luxury Perfumes Admin Panel
+ */
+header('Content-Type: text/html; charset=utf-8');
+
+if (!isset($pageTitle))
+    $pageTitle = 'لوحة التحكم';
+$currentPage = basename($_SERVER['PHP_SELF']);
+$currentDir = basename(dirname($_SERVER['PHP_SELF']));
+?>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <?= e($pageTitle) ?> — إدارة براند
+    </title>
+    <meta name="robots" content="noindex,nofollow">
+    <link rel="stylesheet" href="/brand/assets/css/admin.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Montserrat:wght@600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="admin-wrapper">
+
+        <!-- ===== SIDEBAR ===== -->
+        <aside class="admin-sidebar" id="adminSidebar">
+            <div class="sidebar-logo">
+                <div>
+                    <p class="sidebar-logo-text">BRAND</p>
+                    <p class="sidebar-logo-sub">Admin Panel</p>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <p class="nav-section-title">الرئيسية</p>
+                <a href="/brand/admin/"
+                    class="sidebar-link <?= $currentPage === 'index.php' && $currentDir === 'admin' ? 'active' : '' ?>">
+                    <span class="sidebar-icon"></span> Dashboard
+                </a>
+
+                <p class="nav-section-title">المتجر</p>
+                <a href="/brand/admin/products/" class="sidebar-link <?= $currentDir === 'products' ? 'active' : '' ?>">
+                    <span class="sidebar-icon"></span> المنتجات
+                </a>
+                <a href="/brand/admin/categories/"
+                    class="sidebar-link <?= $currentDir === 'categories' ? 'active' : '' ?>">
+                    <span class="sidebar-icon"></span> التصنيفات
+                </a>
+                <a href="/brand/admin/orders/" class="sidebar-link <?= $currentDir === 'orders' ? 'active' : '' ?>">
+                    <span class="sidebar-icon"></span> الطلبات
+                </a>
+
+                <p class="nav-section-title">الإعدادات</p>
+                <a href="/brand/admin/settings.php"
+                    class="sidebar-link <?= $currentPage === 'settings.php' ? 'active' : '' ?>">
+                    <span class="sidebar-icon"></span> إعدادات الموقع
+                </a>
+
+                <p class="nav-section-title">روابط</p>
+                <a href="/brand/" target="_blank" class="sidebar-link">
+                    <span class="sidebar-icon"></span> عرض الموقع
+                </a>
+                <a href="/brand/admin/logout.php" class="sidebar-link"
+                    onclick="return confirm('هل تريد تسجيل الخروج؟')">
+                    <span class="sidebar-icon"></span> تسجيل الخروج
+                </a>
+            </nav>
+        </aside>
+
+        <!-- ===== MAIN ===== -->
+        <div class="admin-main">
+            <!-- Top Bar -->
+            <header class="admin-topbar">
+                <div>
+                    <p class="topbar-title">
+                        <?= e($pageTitle) ?>
+                    </p>
+                    <p class="topbar-welcome">مرحباً،
+                        <?= e(currentAdmin()['full_name']) ?>
+                    </p>
+                </div>
+                <div class="topbar-actions">
+                    <a href="/brand/admin/products/add.php" class="admin-btn admin-btn-primary admin-btn-sm">+ منتج
+                        جديد</a>
+                </div>
+            </header>
+            <!-- Content -->
+            <div class="admin-content">

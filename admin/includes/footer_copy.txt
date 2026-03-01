@@ -1,0 +1,8 @@
+</div><!-- /.admin-content -->
+</div><!-- /.admin-main -->
+</div><!-- /.admin-wrapper -->
+
+<script src="/brand/assets/js/admin.js" defer></script>
+</body>
+
+</html>
